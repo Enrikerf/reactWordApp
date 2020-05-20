@@ -29,7 +29,7 @@ const TabSearch: React.FC = () => {
         <form>
           <div className="form-group">
             <IonItem>
-              <IonLabel position="floating">Buscar</IonLabel>
+              <IonLabel position="floating">Search</IonLabel>
               <IonInput
                 id="wordToSearch"
                 name="wordToSearch"
@@ -52,7 +52,7 @@ const TabSearch: React.FC = () => {
                   <IonLabel text-wrap>Review tomorrow</IonLabel>
                 </IonButton>
                 <IonButton class="card-content-button">
-                  <IonLabel text-wrap>Review in X days</IonLabel>
+                  <IonLabel text-wrap>Review in two days</IonLabel>
                 </IonButton>
                 <IonButton class="card-content-button">
                   <IonLabel text-wrap>Learn</IonLabel>

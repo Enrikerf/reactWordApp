@@ -10,10 +10,10 @@ import {
   IonTabs
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { ellipse, square, triangle } from 'ionicons/icons';
-import TabSearch from './pages/TabSearch';
-import TabKnowledge from './pages/TabKnowledge';
-import TabHomework from './pages/TabHomework';
+import { ellipse, square, triangle, searchOutline, folderOutline, barbellOutline } from 'ionicons/icons';
+import TabSearch from './pages/SearchPage/TabSearch';
+import TabKnowledge from './pages/KnowledgePage/TabKnowledge';
+import TabHomework from './pages/HomeworkPage/TabHomework';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -46,15 +46,15 @@ const App: React.FC = () => (
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
           <IonTabButton tab="tabHomework" href="/tabHomework">
-            <IonIcon icon={triangle} />
+            <IonIcon icon={barbellOutline} />
             <IonLabel>Homework</IonLabel>
           </IonTabButton>
           <IonTabButton tab="tabKnowledge" href="/tabKnowledge">
-            <IonIcon icon={ellipse} />
+            <IonIcon icon={folderOutline} />
             <IonLabel>Knowledge</IonLabel>
           </IonTabButton>
           <IonTabButton tab="tabSearch" href="/tabSearch">
-            <IonIcon icon={square} />
+            <IonIcon icon={searchOutline} />
             <IonLabel>Search</IonLabel>
           </IonTabButton>
         </IonTabBar>
