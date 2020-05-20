@@ -17,6 +17,7 @@ import {
 } from "@ionic/react";
 
 const TabSearch: React.FC = () => {
+  const status = "prove";
   return (
     <IonPage>
       <IonHeader>
