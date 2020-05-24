@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useState } from "react";
 import {
   IonContent,
   IonHeader,
@@ -19,12 +19,26 @@ import EntryService from "../../shared/modules/api-kerf/services/entryService/En
 
 function TabHomework(props: any) {
   const [entries, setEntries] = useState([] as Entry[]);
-  useEffect(() => {
-    EntryService.getEntries().then((res) => {
+  const [wordToSearch, setWordToSearch] = useState<string>("");
+  const handleSearch = function (event: any): void {
+    event.preventDefault();
+    EntryService.getEntries(wordToSearch).then((res) => {
       setEntries(res);
     });
-  }, []);
+  };
+  const onWordToSearchChange = function (event: any): void {
+    if (event.detail.value) {
+      let auxWordToSearch: string = event.detail.value;
+      setWordToSearch(auxWordToSearch);
+    }
+  };
+  const handleItemClick = function (id:number): void{
+    console.log("item clicked: " + id)
+  };
 
+  const handleIconClick = function (id:number): void{
+    console.log("icon clicked: " + id)
+  };
   const styles = {
     IonList: {
       height: "100%",
@@ -40,21 +54,23 @@ function TabHomework(props: any) {
       </IonHeader>
 
       <IonContent>
-        <form>
-          <div className="form-group">
-            <IonItem>
-              <IonLabel position="floating">Buscar</IonLabel>
-              <IonInput
-                id="wordToSearch"
-                name="wordToSearch"
-                class="form-control"
-              ></IonInput>
-            </IonItem>
-          </div>
+        <form onSubmit={handleSearch}>
+          <IonItem>
+            <IonLabel position="floating">Search</IonLabel>
+            <IonInput
+              value={wordToSearch}
+              onIonChange={onWordToSearchChange}
+            ></IonInput>
+          </IonItem>
         </form>
         <IonList style={styles.IonList}>
-          {entries.map((el) => (
-            <EntryCard key={el.id} />
+          {entries.map((entry) => (
+            <EntryCard 
+              key={entry.id}  
+              entry={entry}
+              onItemClick={() => handleItemClick(entry.id)}
+              onIconClick={() => handleIconClick(entry.id)}
+            />
           ))}
         </IonList>
       </IonContent>
