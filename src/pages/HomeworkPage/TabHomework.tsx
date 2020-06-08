@@ -32,8 +32,13 @@ function TabHomework(props: any) {
       setWordToSearch(auxWordToSearch);
     }
   };
-  const handleItemClick = function (id:number): void{
-    console.log("item clicked: " + id)
+  const handleItemClick = function (entry:Entry): void{
+    console.log("item clicked: " + entry.id)
+    props.history.push({
+      pathname: '/entryDetail',
+      search: '',
+      state: { entry: entry }
+    });
   };
 
   const handleIconClick = function (id:number): void{
@@ -68,7 +73,7 @@ function TabHomework(props: any) {
             <EntryCard 
               key={entry.id}  
               entry={entry}
-              onItemClick={() => handleItemClick(entry.id)}
+              onItemClick={() => handleItemClick(entry)}
               onIconClick={() => handleIconClick(entry.id)}
             />
           ))}
