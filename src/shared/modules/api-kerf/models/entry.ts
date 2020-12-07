@@ -5,4 +5,5 @@ export interface Entry {
   results: Meaning[];
   pronunciation: any;
   frequency: number;
+  syllables:any;
 }

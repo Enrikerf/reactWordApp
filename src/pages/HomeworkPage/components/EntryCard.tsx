@@ -21,10 +21,10 @@ function EntryCard(props: any) {
         <IonLabel class="ion-text-wrap" onClick={props.onItemClick}>
           <IonText color="primary">
             <h3>
-              ({props.entry.id}){props.entry.word}
+              ({props.entry.id}) {props.entry.word}
             </h3>
           </IonText>
-          <p>{props.entry.pronunciation}</p>
+          <p>{props.entry.pronunciation.all}</p>
         </IonLabel>
         <IonIcon
           onClick={props.onIconClick}

@@ -16,7 +16,6 @@ import { Entry } from "../../shared/modules/api-kerf/models/entry";
 import EntryCard from "./components/EntryCard";
 import EntryService from "../../shared/modules/api-kerf/services/entryService/EntryService";
 
-
 function TabHomework(props: any) {
   const [entries, setEntries] = useState([] as Entry[]);
   const [wordToSearch, setWordToSearch] = useState<string>("");
@@ -27,22 +26,19 @@ function TabHomework(props: any) {
     });
   };
   const onWordToSearchChange = function (event: any): void {
-    if (event.detail.value) {
-      let auxWordToSearch: string = event.detail.value;
-      setWordToSearch(auxWordToSearch);
-    }
+    setWordToSearch(event.detail.value ? event.detail.value : "");
   };
-  const handleItemClick = function (entry:Entry): void{
-    console.log("item clicked: " + entry.id)
+  const handleItemClick = function (entry: Entry): void {
+    console.log("item clicked: " + entry.id);
     props.history.push({
-      pathname: '/entryDetail',
-      search: '',
-      state: { entry: entry }
+      pathname: "/entryDetail",
+      search: "",
+      state: { entry: entry },
     });
   };
 
-  const handleIconClick = function (id:number): void{
-    console.log("icon clicked: " + id)
+  const handleIconClick = function (id: number): void {
+    console.log("icon clicked: " + id);
   };
   const styles = {
     IonList: {
@@ -70,8 +66,8 @@ function TabHomework(props: any) {
         </form>
         <IonList style={styles.IonList}>
           {entries.map((entry) => (
-            <EntryCard 
-              key={entry.id}  
+            <EntryCard
+              key={entry.id}
               entry={entry}
               onItemClick={() => handleItemClick(entry)}
               onIconClick={() => handleIconClick(entry.id)}
